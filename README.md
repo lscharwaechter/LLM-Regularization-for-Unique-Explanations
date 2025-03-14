@@ -40,4 +40,10 @@ Finally, the overall loss function is the sum of all loss terms. The optimal mod
   $\mathcal{L}_{total} = \mathcal{L}_{class}+\mathcal{L}_{triplet}+\mathcal{L}_{positive}+\mathcal{L}_{negative}$<br/>
   $f^*_{\theta} = \mathop{\mathrm{argmin}}_{\theta}~\mathbb{E}_{(x,y)\sim p_{data}}[\mathcal{L}_{total}(x,y,f^*_\theta)]$
 
-  
+## Example
+
+<p align="center">
+<img src="https://github.com/user-attachments/assets/5df23797-2e9c-4e47-8424-8aa7968024f5" width="600"/>
+</p>
+
+This example text comes from the [20newsgroups dataset](https://scikit-learn.org/0.19/datasets/twenty_newsgroups.html), which consists of user comments of 20 different news topics, e.g. sports-related such as 'baseball' or 'hockey'. A [BERT](https://huggingface.co/docs/transformers/model_doc/bert) language model is finetuned using the above optimization scheme. The first output shows the model's top influenced tokens for the decision (baseball) without any regularization. The second output shows the result of the finetuned model, where not only the attributions (A) but also the CLS embeddings of the inputs (B) are aligned and contrasted during finetuning. In this example, the model indeed focussed less on ambiguous Tokens (such as game, games, team) and more on uniue, class-specific Tokens such as 'Phillies' and 'innings'.
