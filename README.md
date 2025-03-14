@@ -23,16 +23,13 @@ The model should learn that the positive example belongs to the current input's 
   $\mathop{\mathrm{argmax}}_{i \in \{1,\dots,\left|\mathbb{C}\right|\}} f_\theta(x) \neq \mathop{\mathrm{argmax}}_{i \in \{1,\dots,\left|\mathbb{C}\right|\}} f_\theta(x'')$</p>
 
 To formulate both constraints as a loss function, the probability distribution of the model's prediction is utilized: The classification head $f^c_\theta$ consists of a linear projection of the model's representation $r$ into output logits $z$ and a Softmax function, that transforms the logits into a probability distribution over the classes $\mathbb{C}$. The prediction $\hat{y}$ is then given by the largest class probability. The divergence of the probability distributions $P_{x'}$ and $P_{x''}$ to the probability distribution of the current input $P_{x}$ can then be measured using the Jensen-Shannon-Divergence (JSD):
-
 <p align="center">
-  $\text{JSD} (P\left|\right|Q) = \frac{1}{2}\text{D}_{\text{KL}}(P\left|\right|M)+\frac{1}{2}\text{D}_{\text{KL}}(Q\left|\right|M)$<br/>
-  $M = \frac{1}{2}(P+Q)$
+  JSD(P || Q) = $\frac{1}{2}$ $\text{D}_{\text{KL}}$(P || M) + $\frac{1}{2}$ $\text{D}_{\text{KL}}$(Q || M) <br/>
+  $M = \frac{1}{2}(P+Q)$</p>
 
-where $M$ is a mixture distribution of both probability distributions $P$ and $Q$ and $\text{D}_{\text{KL}}$ is the Kullback-Leibler-Divergence.
-
-The divergence between the probability distribution $P_{x}$ and the positive example $P_{x'}$ should be minimal and can therefore be utilized as a loss function as follows:
+where $M$ is a mixture distribution of both probability distributions $P$ and $Q$, and $D_{\text{KL}}$ is the Kullback-Leibler Divergence. The divergence between the probability distribution $P_x$ and the positive example $P_{x'}$ should be minimal and can therefore be utilized as a loss function as follows:
 <p align="center">
-  $\mathcal{L}_{positive} = \textrm{JSD}(P_{x}\left|\right|P_{x'})$</p>
+$\mathcal{L}_{\text{positive}} = \text{JSD}(P_x \parallel P_{x'})$</p>
 
 To incorporate the constraint for the negative example $x''$ the JS-Divergence between $P_{x''}$ and a custom uniform distribution $U_{custom}$ is minimized. This is done because it should be prohibited for the model to learn the perturbations of the negative examples to belong to only one class (clustering the noise pattern). For every input $x$ with label $y$ a uniform distribution $U_{custom}$ is constructed where the probability of the current class $y$ is set to $0$ while the probability for all other classes is uniformly set to $\frac{1}{\left|\mathbb{C}\right|-1}$. This principle encourages the model to lower the prediction probability of the input class $y$ while preventing excessive probability mass from being assigned to a single alternative class across all negative examples. The loss function can be expressed as follows:
 <p align="center">
