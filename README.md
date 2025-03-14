@@ -37,7 +37,7 @@ To incorporate the constraint for the negative example $x''$ the JS-Divergence b
 
 Finally, the overall loss function is the sum of all loss terms. The optimal model $f^*_{\theta}$ is the model whose learned weights minimize this loss:
 <p align="center">
-  $\mathcal{L}_{total} = \mathcal{L}_{class}+\mathcal{L}_{triplet}+\mathcal{L}_{positive}+\mathcal{L}_{negative}$<br/>
+  $\mathcal{L}_{total} = \mathcal{L}_{class}+\mathcal{L}_{triplet}+\mathcal{L}_{positive}+\mathcal{L}_{negative}$<br/><br/>
   $f^*_{\theta} = \mathop{\mathrm{argmin}}_{\theta}~\mathbb{E}_{(x,y)\sim p_{data}}[\mathcal{L}_{total}(x,y,f^*_\theta)]$
 
 ## Example
