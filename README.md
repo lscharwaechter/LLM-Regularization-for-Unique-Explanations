@@ -17,8 +17,8 @@ The positive example $x'$ and the negative example $x''$ are constructed via per
 <p align="center">
 <img src="https://github.com/user-attachments/assets/c985f040-74ce-43ed-b7d1-3a47cd400499" width="400"/>
 </p>
-The model should learn that the positive example belongs to the current input's class, while the negative example should belong to another (similar) class.<br/>
-<p align="center">
+The model should learn that the positive example belongs to the current input's class, while the negative example should belong to another (similar) class.
+<p align="center"><br/>
   $\mathop{\mathrm{argmax}}_{i \in \{1,\dots,\left|\mathbb{C}\right|\}} f_\theta(x) = \mathop{\mathrm{argmax}}_{i \in \{1,\dots,\left|\mathbb{C}\right|\}} f_\theta(x')$<br/>
   $\mathop{\mathrm{argmax}}_{i \in \{1,\dots,\left|\mathbb{C}\right|\}} f_\theta(x) \neq \mathop{\mathrm{argmax}}_{i \in \{1,\dots,\left|\mathbb{C}\right|\}} f_\theta(x'')$</p>
 
