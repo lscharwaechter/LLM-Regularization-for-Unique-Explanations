@@ -39,10 +39,10 @@ MARGIN = 2
 
 # Define regularization hyperparameters
 ALPHA = 1
-LAMBDA = 1
 BETA = 1
 GAMMA = 1
 DELTA = 1
+LAMBDA = 1
 
 #%%
 
@@ -207,7 +207,7 @@ for epoch in range(EPOCHS):
         neg_class_loss = js_divergence_loss(probabilities_neg_emb, U_custom)
          
         # Tune total loss
-        total_loss = ALPHA*classification_loss + LAMBDA*triplet_loss_cls + triplet_loss_att + BETA*neg_class_loss + GAMMA*pos_class_loss
+        total_loss = ALPHA*classification_loss + BETA*triplet_loss_cls + GAMMA*triplet_loss_att + DELTA*neg_class_loss + LAMBDA*pos_class_loss
         total_loss = total_loss / training_args.gradient_accumulation_steps
         
         # Accumulate gradients
