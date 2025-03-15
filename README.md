@@ -33,7 +33,7 @@ $\mathcal{L}_{\text{positive}} = \text{JSD}(P_x \parallel P_{x'})$</p>
 
 To incorporate the constraint for the negative example $x''$ the JS-Divergence between $P_{x''}$ and a custom uniform distribution $U_{custom}$ is minimized. This is done because it should be prohibited for the model to learn the perturbations of the negative examples to belong to only one class (clustering the noise pattern). For every input $x$ with label $y$ a uniform distribution $U_{custom}$ is constructed where the probability of the current class $y$ is set to $0$ while the probability for all other classes is uniformly set to $\frac{1}{\left|\mathbb{C}\right|-1}$. This principle encourages the model to lower the prediction probability of the input class $y$ while preventing excessive probability mass from being assigned to a single alternative class across all negative examples. The loss function can be expressed as follows:
 <p align="center">
-  $\mathcal{L}_{negative} = \text{JSD} (P_{x''}\left|\right|U_{custom})$</p>
+  $\mathcal{L}_{negative} = \text{JSD} (P_{x''} \parallel U_{custom})$</p>
 
 Finally, the overall loss function is the sum of all loss terms. The optimal model $f^*_{\theta}$ is the model whose learned weights minimize this loss:
 <p align="center">
