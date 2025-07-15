@@ -1,6 +1,6 @@
 # LLM Regularization for Unique Explanations
 
-See [Fraunhofer Publica]([https://arxiv.org/abs/2401.01987](https://publica.fraunhofer.de/handle/publica/489301)) for the full text.
+See [Fraunhofer Publica](https://publica.fraunhofer.de/handle/publica/489301) for the full text.
 
 ## About
 
