@@ -1,3 +1,9 @@
+# LLM Regularization for Unique Explanations
+
+See [Fraunhofer Publica]([https://arxiv.org/abs/2401.01987](https://publica.fraunhofer.de/handle/publica/489301)) for the full text.
+
+## About
+
 This work was part of my master thesis and tackles a novel regularization scheme of Large Language Models (LLM) to shape the attention and internal representation of the model during finetuning such that extracted explanations for multiple (similar) decision possibilities are maximally contrastive. Explanations are given by the highest attributed Tokens of the input, extracted by Integrated Gradients. This approach ideally leads to an attention shift of the model to the unique Tokens of the input to be perceived as relevant, making explanations less ambiguous. To incorporate the learning for contrastive attributions during model finetuning, the loss function $\mathcal{L}(x,y;f_\theta)$ is supplemented with regularization terms that measure the degree of attribution contrastivity. For multiclass classification problems, the classification loss is evaluated using the Cross Entropy loss function: 
 <p align="center">
   $\mathcal{L}_{class} = -\log\frac{e^{z_{y}}}{\sum_{c=1}^{|\mathbb{C}|}e^{z_c}}$ </p>
